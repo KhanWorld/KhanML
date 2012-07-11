@@ -138,6 +138,7 @@ class ViewExercise(request_handler.RequestHandler):
         ML_language = ( ':' in exid ) and exid.split(':')[0] or 'en' # Default to english
         ML_exercise = ( ':' in exid ) and exid.split(':')[1] or exid
         exercise_template_html = exercise_template(ML_language)
+	exercise_template_html = exercise_template_html.decode('utf-8')
 
         exercise_body_html, exercise_inline_script, exercise_inline_style, data_require, sha1 = exercise_contents(ML_exercise, ML_language)
         user_exercise.exercise_model.sha1 = sha1
